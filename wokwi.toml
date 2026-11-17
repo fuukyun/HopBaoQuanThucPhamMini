@@ -1,0 +1,9 @@
+[wokwi]
+version = 1
+firmware = '.pio/build/esp32dev/firmware.bin'
+elf = '.pio/build/esp32dev/firmware.elf'
+
+# Chuyển tiếp cổng: mở http://localhost:8180 trên máy tính -> vào cổng 80 của ESP32 ảo
+[[net.forward]]
+from = "localhost:8180"
+to = "target:80"

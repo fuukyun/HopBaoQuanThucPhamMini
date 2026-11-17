@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "author": "AdruinoStarter",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-ds18b20", "id": "temp1", "top": -110, "left": -160, "attrs": { "temperature": "6.5" } },
+    { "type": "wokwi-resistor", "id": "r_pu", "top": -150, "left": -60, "attrs": { "value": "4700" } },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": -260, "left": 120, "attrs": { "pins": "i2c" } },
+    { "type": "wokwi-buzzer", "id": "bz1", "top": 40, "left": 220, "attrs": { "volume": "0.2" } }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+
+    [ "temp1:VCC", "esp:3V3", "red", [] ],
+    [ "temp1:GND", "esp:GND.2", "black", [] ],
+    [ "temp1:DQ", "esp:D4", "yellow", [] ],
+    [ "r_pu:1", "temp1:DQ", "yellow", [] ],
+    [ "r_pu:2", "esp:3V3", "red", [] ],
+
+    [ "lcd1:VCC", "esp:VIN", "red", [] ],
+    [ "lcd1:GND", "esp:GND.2", "black", [] ],
+    [ "lcd1:SDA", "esp:D21", "green", [] ],
+    [ "lcd1:SCL", "esp:D22", "purple", [] ],
+
+    [ "bz1:2", "esp:D26", "orange", [] ],
+    [ "bz1:1", "esp:GND.1", "black", [] ]
+  ],
+  "dependencies": {}
+}
